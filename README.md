@@ -1,99 +1,68 @@
-# 🖥️ VS Code Portfolio
+# VS Code Portfolio
 
-A unique developer portfolio that looks and feels exactly like Visual Studio Code!
+A personal portfolio website built with React and Next.js, designed to look and feel like Visual Studio Code.
 
-## ✨ Features
+![VS Code Portfolio Demo](public/assets/demo-screenshot.png)
 
-- 🎨 VS Code interface with dark/light themes
-- 📁 Interactive file explorer
-- 📝 Syntax-highlighted code editor
-- 🖥️ Working terminal
-- 🎯 Multiple tabs support
-- 📊 Git integration UI
-- 🔍 Search functionality
-- 💾 Download resume feature
+## 🚀 Features
 
-## 🚀 Quick Start
-
-```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-## 📦 Deployment
-
-### Deploy to Vercel
-```bash
-npm i -g vercel
-vercel
-```
-
-### Deploy to Netlify
-```bash
-npm run build
-# Drag and drop the 'out' folder to Netlify
-```
-
-### Deploy to GitHub Pages
-```bash
-npm run build
-npm run export
-# Push the 'out' folder to gh-pages branch
-```
+- **Interactive Terminal**: A fully functional terminal with command history and custom commands (`help`, `about`, `projects`, `contact`, `clear`).
+- **Dynamic File System**: Navigate through folders and files in the Explorer sidebar. Files open in tabs just like in VS Code.
+- **Live GitHub Stats**: Fetches real-time data (stars, repos, followers) from the GitHub API.
+- **Theming System**: Switch between **Dark**, **Light**, and **Monokai** themes.
+- **Syntax Highlighting**: Code files (`.tsx`, `.json`, `.md`) are rendered with syntax highlighting matching the active theme.
+- **Mobile Responsive**: Fully responsive design with a hamburger menu for mobile devices.
+- **Keyboard Shortcuts**: Use `Ctrl+Shift+P` (or `Cmd+Shift+P`) to toggle the command palette (visual only for now).
 
 ## 🛠️ Tech Stack
 
-- **Next.js 14** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Lucide Icons** - Icons
-- **Framer Motion** - Animations
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Library**: [React](https://reactjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **State Management**: React Context API (`FileSystemContext`, `ThemeContext`)
 
-## 📁 Project Structure
+## 🏃‍♂️ Getting Started
 
-```
-vscode-portfolio/
-├── app/              # Next.js app directory
-├── components/       # React components
-│   ├── layout/      # Layout components
-│   ├── editor/      # Code editor
-│   ├── sidebar/     # File explorer
-│   └── terminal/    # Terminal component
-├── data/            # Portfolio content
-├── hooks/           # Custom React hooks
-├── lib/             # Utility libraries
-├── public/          # Static assets
-├── styles/          # Global styles
-└── types/           # TypeScript types
-```
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/onkardehane/vscode-portfolio.git
+    cd vscode-portfolio
+    ```
 
-## 🎨 Customization
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-1. Update your information in `data/portfolio-content.ts`
-2. Modify the file tree in `data/file-tree.ts`
-3. Customize themes in `lib/themes.ts`
-4. Add new file types and icons
+3.  **Run the development server**
+    ```bash
+    npm run dev
+    ```
 
-## 📝 License
+4.  **Open your browser**
+    Navigate to [http://localhost:3000](http://localhost:3000)
 
-MIT License - feel free to use this for your own portfolio!
+## 🎮 Terminal Commands
 
-## 👨‍💻 Author
+Type `help` in the terminal to see the list of available commands:
 
-**Onkar Dehane**
-- GitHub: [@onkardehane](https://github.com/onkardehane)
-- LinkedIn: [onkar-dehane](https://linkedin.com/in/onkar-dehane-5a9631136)
-- Email: onkar.dehane24@gmail.com
+- `about`: Display information about me.
+- `projects`: List featured projects.
+- `contact`: Show contact information.
+- `clear`: Clear the terminal history.
+
+## 🎨 Themes
+
+Click the theme toggle in the Status Bar (bottom right) to switch between:
+- Dark+ (Visual Studio)
+- Light+ (Visual Studio)
+- Monokai
+
+## 📱 Mobile Support
+
+The application is optimized for mobile devices. The sidebar collapses into a hamburger menu to maximize screen space for the editor and terminal.
 
 ---
 
-Made with ❤️ and lots of ☕
+Built with ❤️ by [Onkar Dehane](https://github.com/onkardehane)

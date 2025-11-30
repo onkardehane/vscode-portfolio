@@ -1,23 +1,41 @@
-import { X, Minus, Square } from 'lucide-react';
+import React from 'react';
+import { Code, Minimize, Maximize2, X, Menu } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
-export default function TitleBar() {
+interface TitleBarProps {
+  onMenuClick?: () => void;
+}
+
+export default function TitleBar({ onMenuClick }: TitleBarProps) {
+  const { colors } = useTheme();
+
   return (
-    <div className="h-8 bg-vscode-tabs-dark border-b border-vscode-border-dark 
-                    flex items-center justify-between px-3 no-select">
-      <div className="flex items-center gap-2">
-        <div className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer" />
-        <div className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 cursor-pointer" />
-        <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 cursor-pointer" />
+    <div style={{
+      height: '30px',
+      background: colors.tabs,
+      borderBottom: `1px solid ${colors.border}`,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '0 10px',
+      userSelect: 'none'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <Menu
+          size={16}
+          className="md:hidden cursor-pointer"
+          style={{ color: colors.text }}
+          onClick={onMenuClick}
+        />
+        <Code size={14} style={{ color: colors.accent }} />
+        <span style={{ fontSize: '12px', color: colors.text }}>
+          Onkar Dehane - Portfolio - Visual Studio Code
+        </span>
       </div>
-      
-      <span className="text-xs text-vscode-text-dim">
-        Onkar Dehane - Portfolio - Visual Studio Code
-      </span>
-      
-      <div className="flex items-center gap-4">
-        <Minus size={14} className="text-vscode-text-dim hover:text-white cursor-pointer" />
-        <Square size={12} className="text-vscode-text-dim hover:text-white cursor-pointer" />
-        <X size={14} className="text-vscode-text-dim hover:text-white cursor-pointer" />
+      <div style={{ display: 'flex', gap: '12px' }}>
+        <Minimize size={14} style={{ cursor: 'pointer', color: colors.textDim }} />
+        <Maximize2 size={14} style={{ cursor: 'pointer', color: colors.textDim }} />
+        <X size={14} style={{ cursor: 'pointer', color: colors.textDim }} />
       </div>
     </div>
   );

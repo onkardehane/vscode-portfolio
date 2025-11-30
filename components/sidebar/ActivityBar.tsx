@@ -1,4 +1,5 @@
 import { FileText, Search, GitBranch, Bug, Puzzle } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 interface ActivityBarProps {
   activeView: string;
@@ -6,6 +7,8 @@ interface ActivityBarProps {
 }
 
 export default function ActivityBar({ activeView, onViewChange }: ActivityBarProps) {
+  const { colors } = useTheme();
+
   const items = [
     { icon: FileText, view: 'explorer', tooltip: 'Explorer' },
     { icon: Search, view: 'search', tooltip: 'Search' },
@@ -15,18 +18,31 @@ export default function ActivityBar({ activeView, onViewChange }: ActivityBarPro
   ];
 
   return (
-    <div className="w-12 bg-vscode-activity-dark border-r border-vscode-border-dark 
-                    flex flex-col items-center pt-2 gap-1">
+    <div
+      className="w-12 flex flex-col items-center pt-2 gap-1"
+      style={{ background: colors.activity, borderRight: `1px solid ${colors.border}` }}
+    >
       {items.map(({ icon: Icon, view, tooltip }) => (
         <button
           key={view}
           onClick={() => onViewChange(view)}
-          className={`p-3 hover:bg-vscode-hover transition-colors ${
-            activeView === view ? 'border-l-2 border-vscode-accent text-white' : 'text-vscode-text-dim'
-          }`}
+          className="p-3 transition-colors relative w-full flex justify-center"
+          style={{
+            color: activeView === view ? colors.accent : colors.textDim,
+          }}
           title={tooltip}
+          onMouseEnter={(e) => {
+            if (activeView !== view) e.currentTarget.style.color = colors.text;
+          }}
+          onMouseLeave={(e) => {
+            if (activeView !== view) e.currentTarget.style.color = colors.textDim;
+          }}
         >
-          <Icon size={20} />
+          <div
+            className="absolute left-0 top-0 bottom-0 w-[2px]"
+            style={{ background: activeView === view ? colors.accent : 'transparent' }}
+          />
+          <Icon size={24} strokeWidth={1.5} />
         </button>
       ))}
     </div>
